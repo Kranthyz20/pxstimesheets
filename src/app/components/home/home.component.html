@@ -1,0 +1,36 @@
+<mat-sidenav-container style="height: 100vh;">
+    <mat-sidenav #snav mode='over' [opened]="toggleSideNav" style="width: 250px">
+        <mat-toolbar fxLayout="row" style="height: 40px;background-color: white;">
+            <span class="flex-spacer">
+                <img src="../../../assets/images/logo-proximus.png" class="logo">
+            </span>
+            <span>
+                <button mat-icon-button (click)="closeMenu()" matTooltip="Close">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </span>
+        </mat-toolbar>
+        <img src="../../../assets/images/user.png" class="no-image">
+        <mat-divider></mat-divider>
+
+        <mat-nav-list fxLayoutAlign="center center" fxLayout="column">
+            <a mat-list-item class="listItems" [routerLinkActive]="['active-link']" [routerLink]="nav.menuItemLink" *ngFor="let nav of navList"
+                (click)="snav.toggle()">
+                <span fxLayout="row" style="padding-left: 40px;">
+                    <mat-icon>{{nav.menuItemIcon}}</mat-icon>&nbsp;
+                    {{nav.menuItemName}}
+                </span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="background: white;">
+        <app-header></app-header>
+        <br />
+        <router-outlet></router-outlet>
+        <!-- <app-footer></app-footer> -->
+    </mat-sidenav-content>
+
+    
+</mat-sidenav-container>
+
+

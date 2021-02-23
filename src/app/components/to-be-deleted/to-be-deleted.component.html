@@ -1,0 +1,83 @@
+<div mat-elevation-z3>
+    <div fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="30px">
+        <div class="container mat-elevation-z3">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="{{d.columnName}}" *ngFor="let d of columnsToDisplay">
+
+                    <span *ngIf="d.type != 'input'">
+                        <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header>{{d.displayName}}</th> -->
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <span fxLayout="column">
+                                <span>
+                                    {{d.displayName}}
+                                </span>
+                                <span>
+                                    {{d.propertyData}}
+                                </span>
+                            </span>
+                        </th>
+                        <td mat-cell *matCellDef="let element"
+                            [ngStyle]="{'background-color': (caller == 'Report' && (d.isWeekend == true ||  element['project']== '')) ? '#e9e3f4'  : '' }">
+                            {{element[d.columnName] ? element[d.columnName] : ''}}
+                        </td>
+                    </span>
+                    <span *ngIf="d.type == 'input'">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <span fxLayout="column">
+                                <span>
+                                    {{d.displayName}}
+                                </span>
+                                <span>
+                                    {{d.propertyData}}
+                                </span>
+                            </span>
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="cellStyle">
+                            <mat-form-field>
+                                <input matInput [disabled]="d.isSticky" style="text-align: center;">
+                            </mat-form-field>
+                        </td>
+                    </span>
+                </ng-container>
+
+                <span *ngIf="caller == 'Approver'">
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="select">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <mat-checkbox (change)="$event ? masterToggle() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()" style="margin-left: -6px;">
+                            </mat-checkbox>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                            <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+
+                    <!-- Details Column -->
+                    <ng-container matColumnDef="details">
+                        <th mat-header-cell *matHeaderCellDef>Details </th>
+                        <td mat-cell *matCellDef="let row" matRipple>
+                            <mat-icon style="padding-top: 9px;">visibility</mat-icon>
+                        </td>
+                    </ng-container>
+                </span>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <div fxLayout="row" fxLayoutGap="10px" *ngIf="caller == 'Timesheet'">
+            <button mat-raised-button class="btn" (click)="onCLick('saved')">Save</button>
+            <button mat-raised-button class="btn" (click)="onCLick('submitted')">Submit</button>
+
+        </div>
+        <div fxLayout="row" fxLayoutGap="10px" *ngIf="caller == 'Approver'">
+            <button [disabled]="!isButtonEnable" mat-raised-button class="btn" (click)="onCLick('approved')">Approve
+                Selected</button>
+        </div>
+    </div>
+</div>

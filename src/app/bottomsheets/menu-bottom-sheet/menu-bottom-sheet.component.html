@@ -1,0 +1,9 @@
+<mat-nav-list fxLayout="column" fxLayout.xs="column" fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center"
+    fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px">
+    <a class="navList" routerLinkActive="is-active" mat-list-item *ngFor="let menuItem of menuItems"
+        [routerLink]="menuItem.menuItemLink" (click)="close()">
+        <i class="fa fa-chevron-right icons" style="padding-right: 10px;"></i>
+        {{ menuItem.menuItemName }}
+        <mat-divider></mat-divider>
+    </a>
+</mat-nav-list>

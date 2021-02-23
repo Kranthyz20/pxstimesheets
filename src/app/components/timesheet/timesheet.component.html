@@ -1,0 +1,273 @@
+<mat-expansion-panel [expanded]="openAdminPanel" class="panel-container">
+    <mat-expansion-panel-header>
+        <mat-panel-title class="title">
+            Admin
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div fxLayoutAlign="center center" fxLayoutGap="8px" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+        fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center" fxLayoutAlign.gt-sm="center center" @btnAnm>
+        <mat-form-field  appearance="outline" class="btnAnmClass">
+            <mat-label>Enter PerId</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field  appearance="outline" class="btnAnmClass">
+            <mat-label>Enter Name</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button mat-icon-button class="btnSearch btnAnmClass" (click)="onSearch()">
+            <mat-icon style="padding: 0px 0px 2px 4px;">person_search</mat-icon>
+        </button>
+    </div>
+</mat-expansion-panel>
+
+<div class="actualsContainer" *ngIf="showTimesheet">
+    <mat-expansion-panel [expanded]="openDetailsPanel" style="margin-bottom: 10px;">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">
+                Additional Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div fxLayoutGap="10px" fxLayoutAlign="center center" fxLayout.sm="column" fxLayout.xs="column"
+            fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center" fxLayoutAlign.gt-sm="center center">
+            <div class="mat-elevation-z1 detailsContainer" *ngFor="let sets of timesheetsMock;">
+                <mat-list>
+                    <mat-list-item *ngFor="let item of sets.set;let j=index;" class="actualsListitem btnAnmClass"
+                        [ngStyle]="{'height': (item.label == 'Org.Unit' && screenWidth != 0 && !(screenWidth>=380 )) ? '65px' : '40px' }">
+                        <span fxFlex="40"><b>{{item.label}}</b></span>
+                        <span fxFlex="5">:</span>
+                        <span fxFlex="55" *ngIf="item.value == 'datepicker'">
+                            <mat-form-field style="width: 100px !important;margin-bottom: -10px;">
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </span>
+                        <span fxFlex="65" *ngIf="item.value != 'datepicker'">{{item.value}}</span>
+                        <!-- <mat-divider *responsive="{bootstrap: ['xl','lg','md']}"></mat-divider> -->
+                        <mat-divider></mat-divider>
+                    </mat-list-item>
+
+                </mat-list>
+            </div>
+        </div>
+    </mat-expansion-panel>
+
+    <div class="container1" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center" fxLayout.sm="column"
+        fxLayout.xs="column" fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center"
+        fxLayoutAlign.gt-sm="center center">
+        <div mat-card-title style="font-size: 14px;margin:10px 0;">
+            Missing Timesheets
+        </div>
+        <div class="flex-spacer" fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center">
+            <mat-chip-list @btnAnm>
+                <mat-chip class="mat-elevation-z2 missingDatesChips btnAnmClass" *ngFor="let m of missingTimesheets">
+                    {{m}}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div fxLayoutGap="10px">
+            <span style="padding-top: 0.5%;">History</span>
+            <mat-form-field>
+                <mat-select [(value)]="selected">
+                    <mat-option *ngFor="let history of timesheetHistory" [value]="history">
+                        {{history}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- For Desktop  -->
+    <div *responsive="{bootstrap: ['xl','lg','md']}" class="desktopContainer">
+        <app-to-be-deleted [_datasource]="_datasource" [_displayedColumns]="timesheetsDisplayedColumns"
+            [template]="columnsToDisplay" [_caller]="caller"></app-to-be-deleted>
+    </div>
+
+    <!-- For Mobile -->
+    <div *responsive="{bootstrap: ['sm','xs']}" class="mobileContainer">
+        <mat-tab-group class="mat-elevation-z5" class="tabGroup">
+            <span *ngFor="let col of columnsToDisplay">
+                <mat-tab *ngIf="col.mobile == true">
+                    <ng-template mat-tab-label>
+                        <span style="font-size: 9px;padding-bottom: 3px;">{{col.displayName}}</span>
+                        <span style="font-size: 11px;">{{col.propertyData}}</span>
+                    </ng-template>
+
+                    <div fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="20px"
+                        style="width: 100%;margin-top: 1.5%;padding: 3%;">
+
+                        <div fxLayoutGap="10px" fxLayout="row">
+                            <div fxLayoutGap="5px" fxLayout="row">
+                                <span class="indicator" style="background-color: green;"></span>
+                                <span class="value">Submitted</span>
+                            </div>
+                            <div fxLayoutGap="5px" fxLayout="row">
+                                <span class="indicator" style="background-color: orange;"></span>
+                                <span class="value">Saved</span>
+                            </div>
+                            <div fxLayoutGap="5px" fxLayout="row">
+                                <span class="indicator" style="background-color: lightgray;"></span>
+                                <span class="value">Not Filled</span>
+                            </div>
+                        </div>
+
+                        <mat-card class="status-container mat-elevation-z5" fxLayout="row" fxLayoutGap="15px">
+                            <div class="submitted-indication"
+                                [ngStyle]="{'background-color': (col.timesheetStatus == 'submitted') ? 'green' : ((col.timesheetStatus == 'saved') ? 'orange' : ((col.timesheetStatus == 'notFilled') ? 'lightgray' : null)) }">
+                            </div>
+                            <div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Project Code</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].projectCode}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Project Name</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].projectName}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Item</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].item}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Activity</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].activity}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Resp Domain Code</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].respDomainCode}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Resp Domain Name</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].respDomainName}}</Span>
+                                </div>
+                                <br />
+                                <mat-divider></mat-divider>
+                                <div fxLayoutAlign="center center">
+                                    <mat-form-field style="width: 100px !important;">
+                                        <input matInput style="text-align: center;" value="4:00">
+                                        <span matSuffix class="suffix">Hrs</span>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </mat-card>
+
+                        <mat-card class="status-container mat-elevation-z5" fxLayout="row" fxLayoutGap="15px">
+                            <div class="not-filled-indication"
+                                [ngStyle]="{'background-color': (col.timesheetStatus == 'submitted') ? 'green' : ((col.timesheetStatus == 'saved') ? 'orange' : ((col.timesheetStatus == 'notFilled') ? 'lightgray' : null)) }">
+                            </div>
+                            <div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Project Code</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].projectCode}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Project Name</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].projectName}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Item</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].item}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Activity</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].activity}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Resp Domain Code</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].respDomainCode}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Resp Domain Name</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].respDomainName}}</Span>
+                                </div>
+                                <br />
+                                <mat-divider></mat-divider>
+                                <div fxLayoutAlign="center center">
+                                    <mat-form-field style="width: 100px !important;">
+                                        <input matInput style="text-align: center;" value="0:00">
+                                        <span matSuffix class="suffix">Hrs</span>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </mat-card>
+
+                        <mat-card class="status-container mat-elevation-z5" fxLayout="row" fxLayoutGap="15px">
+                            <div class="not-submitted-indication"
+                                [ngStyle]="{'background-color': (col.timesheetStatus == 'submitted') ? 'green' : ((col.timesheetStatus == 'saved') ? 'orange' : ((col.timesheetStatus == 'notFilled') ? 'lightgray' : null)) }">
+                            </div>
+                            <div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Project Code</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].projectCode}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Project Name</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].projectName}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Item</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].item}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Activity</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].activity}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Resp Domain Code</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].respDomainCode}}</Span>
+                                </div>
+                                <div fxLayoutAlign="row" class="projectContainer">
+                                    <span fxFlex="30" class="lbl">Resp Domain Name</span>
+                                    <span fxFlex="5">:</span>
+                                    <Span fxFlex="65" class="value">{{_datasource[0].respDomainName}}</Span>
+                                </div>
+                                <br />
+                                <mat-divider></mat-divider>
+                                <div fxLayoutAlign="center center">
+                                    <mat-form-field style="width: 100px !important;">
+                                        <input matInput style="text-align: center;" value="4:00">
+                                        <span matSuffix class="suffix">Hrs</span>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                        <button mat-raised-button class="btn" *ngIf="col.timesheetStatus == 'notFilled'"
+                            (click)="onCLick('saved')">Save</button>
+                        <button mat-raised-button class="btn"
+                            *ngIf="col.timesheetStatus == 'notFilled' || col.timesheetStatus == 'saved'"
+                            (click)="onCLick('submitted')">Submit</button>
+                        <button mat-raised-button class="btn" *ngIf="col.timesheetStatus == 'submitted'"
+                            (click)="onCLick('recalled')">Recall</button>
+                    </div>
+                    <br />
+                </mat-tab>
+            </span>
+        </mat-tab-group>
+
+
+    </div>
+
+</div>

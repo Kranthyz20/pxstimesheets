@@ -1,0 +1,114 @@
+.toolbar {
+    background: white;
+    color: #5c2d91;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    width: 100%;
+    height: 50px;
+}
+
+.logo {
+    height: 15px;
+    background: transparent;
+}
+
+.userDetails {
+    font-size: 14px;
+}
+
+.seperator {
+    color: #00bcee;
+    padding: 0 2px;
+}
+
+.appName {
+    text-align: center;
+    padding-right: 5%;
+    font-weight: 400;
+}
+
+.navList {
+    color: #5c2d91;
+    /* background: #5c2d91; */
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    /* border-radius: 0 0 14px; */
+    width: 100%;
+    border-bottom: 1px solid #5c2d91;
+    font-size: 14px;
+}
+
+.mat-list-base .mat-list-item,
+.mat-list-base .mat-list-option {
+    height: auto;
+}
+
+.mat-list-base {
+    padding-top: 0px;
+}
+
+.navList:hover {
+    background: white;
+    /* border-radius: 0 0 14px; */
+    border-bottom: 1px solid #00bcee;
+    color: #00bcee;
+    /* padding-right: 10px;  */
+    transition: 0.3s ease-out;
+    cursor: pointer;
+}
+
+.is-active {
+    background: white;
+    /* border-radius: 0 0 14px; */
+    border-bottom: 1px solid #00bcee;
+    color: #00bcee;
+    /* padding-right: 10px;  */
+    transition: 0.3s ease-out;
+}
+
+.icons {
+    cursor: pointer;
+}
+
+.icons:hover {
+    color: #00bcee;
+}
+
+.title {
+    color: #00bcee;
+}
+
+.progressBar {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    height: 3px;
+    color: white;
+    background: white;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #00bcee;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #5c2d91;
+}
+
+::ng-deep .mat-progress-bar {
+    border-radius: 2px;
+}
+
+.userMenu {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    // color: #5c2d91;
+}
+
+.langLink {
+    cursor: pointer;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.menu {
+    margin-top: 0.6%;
+}

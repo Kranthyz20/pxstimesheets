@@ -1,0 +1,215 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    min-height: 100vh;
+    background: white;
+}
+
+.flex-spacer {
+    flex: 1 1 auto;
+}
+
+.flex-spacer-center {
+    flex: 0.4 1 auto;
+}
+
+.mat-option-text .mat-form-field {
+    text-align: center;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.mat-icon:hover {
+    cursor: pointer;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+/* width */
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+    border-radius: 20px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #5c2d91;
+    border-radius: 20px;
+}
+
+.mat-form-field-infix {
+    border-top: 0px;
+}
+
+.mat-bottom-sheet-container-large {
+    min-width: 250px !important;
+}
+
+.mat-menu-content:not(:empty) {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.mat-fab.mat-accent,
+.mat-flat-button.mat-accent,
+.mat-mini-fab.mat-accent,
+.mat-raised-button.mat-accent {
+    //   background-color: #00bcee !important;
+    background-color: #5c2d91 !important;
+    // background-color: white !important;
+    color: white;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float
+    .mat-input-server:focus
+    + .mat-form-field-label-wrapper
+    .mat-form-field-label,
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    -webkit-transform: translateY(-1.05em) scale(0.75);
+    transform: translateY(-1.05em) scale(0.75);
+}
+
+.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+    transform: translateY(-20%);
+}
+
+mat-label {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-label {
+    margin-top: 0px !important;
+}
+
+mat-label {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+}
+
+.mat-form-field {
+    width: 300px;
+}
+
+.mat-input-element {
+    padding-top: 4px !important;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+}
+
+.mat-option {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+}
+
+.mat-select-panel .mat-optgroup-label,
+.mat-select-panel .mat-option {
+    height: 37px !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 1em 0 0.6em 0 !important;
+}
+
+/* focus style */
+.mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus,
+.mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus,
+.mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus,
+.mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus {
+    // background: #746868;
+    background: #5c2d91;
+    width: 100%;
+    color: white !important;
+}
+/* ink bar style */
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    // background: rgba(38, 39, 39, 0.3);
+    background: transparent;
+
+    height: 41px;
+    padding-bottom: 5px;
+    width: 100%;
+    color: white !important;
+}
+
+.mat-tab-label {
+    min-width: 40px !important;
+    padding: 3px !important;
+    width: 100%;
+    border-bottom: 0px;
+    border: 0.5px solid lightgray;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    opacity: 1 !important;
+    background: white;
+}
+
+.mat-tab-label:focus {
+    color: white;
+    background: #5c2d91;
+}
+
+.mat-tab-label.mat-tab-group-active:not(:focus) {
+    color: white;
+    background: #5c2d91;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    color: white;
+}
+
+.mat-tab-label.mat-tab-label-active {
+    background: #5c2d91;
+    color: white;
+    border-bottom: 5px solid #00bcee;
+    transform: translateY(2);
+}
+
+.mat-simple-snackbar {
+    color: white;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
+    padding: 0 12px !important;
+}
+
+.custom-date-class {
+    background: yellow;
+    border-radius: 100%;
+}
+
+.mat-button,
+.mat-fab,
+.mat-flat-button,
+.mat-icon-button,
+.mat-mini-fab,
+.mat-raised-button,
+.mat-stroked-button {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: #5c2d91;
+}
+
+.mat-calendar-body-selected {
+    background-color: #5c2d91;
+    color: #fff;
+}
+
+.mat-expansion-panel-header {
+    padding: 0 14px !important;
+}

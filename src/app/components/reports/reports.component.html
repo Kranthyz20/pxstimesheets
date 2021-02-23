@@ -1,0 +1,78 @@
+<mat-expansion-panel [expanded]="true" class="panel-container">
+    <mat-expansion-panel-header>
+        <mat-panel-title class="title">
+            Report Criteria
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form (ngSubmit)="submit" [formGroup]="reportForm" fxLayoutGap="8px" fxLayoutAlign="center center" fxLayout="row"
+        fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center"
+        fxLayoutAlign.gt-sm="center center" @btnAnm>
+        <ng-container *ngFor="let col of reportTemplate">
+            <mat-form-field appearance="outline" class="btnAnmClass">
+                <mat-label>{{col.displayName}}</mat-label>
+                <mat-select [multiple]="col.isMultiple" formControlName="{{col.columnName}}"
+                    (change)="selecteduser($event)" style="height: 20px;">
+                    <mat-option selected *ngFor="let _value of col.propertyData" [value]="_value">
+                        {{_value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ng-container>
+
+        <button type="submit" mat-raised-button mat-icon-button class="btnSearch btnAnmClass"
+            (click)="generateReport()">
+            <mat-icon style="padding: 0px 0px 0px 3px;">search</mat-icon>
+        </button>
+    </form>
+</mat-expansion-panel>
+
+<div *ngIf="showDetails" fxLayout="column">
+    <div *ngIf="!showWarningImg" @btnAnm fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+        fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center" fxLayoutAlign="center center"
+        fxLayoutGap="10px" class="report-container">
+        <span class="flex-spacer btnAnmClass">
+            <mat-label style="color: gray;">Printed Date : </mat-label>
+            <span>{{currentDate}}</span>
+        </span>
+        <span class="btnAnmClass">Timesheets of <span style="font-weight:bold; color: #00bcee;">{{month}}
+                {{year}}</span>
+        </span>
+    </div>
+
+    <div style="margin: 1% 1.8%;border-radius: 4px;" *ngFor="let user of selectedUserDetails" fxLayout="column"
+        fxLayoutGap="10px" @btnAnm class="mat-elevation-z3">
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign.sm="center center" fxLayoutAlign.xs="center center"
+            style="padding: 10px 0 0 0px; font-size: 10px;">
+            <span style="width: 100%;" class="btnAnmClass">
+                <span class="userLbl" fxFlex="45">Per ID</span>
+                <span fxFlex="5"> : </span>
+                <span fxFlex="50" class="userValue">{{user.perId}}</span>
+            </span>
+            <span style="width: 100%;" class="btnAnmClass">
+                <span class="userLbl" fxFlex="45">Name</span>
+                <span fxFlex="5"> : </span>
+                <span fxFlex="50" class="userValue">{{user.name}}</span>
+            </span>
+            <span style="width: 100%;" class="btnAnmClass">
+                <span class="userLbl" fxFlex="45">Org. Unit(s)</span>
+                <span fxFlex="5"> : </span>
+                <span fxFlex="50" class="userValue">{{user.orgUnit}}</span>
+            </span>
+            <span style="width: 100%;" class="btnAnmClass">
+                <span class="userLbl" fxFlex="45">Manager</span>
+                <span fxFlex="5"> : </span>
+                <span fxFlex="50" class="userValue">{{user.manager}}</span>
+            </span>
+        </div>
+        <div style="padding: 8px;">
+            <app-to-be-deleted [_datasource]="_datasource" [_displayedColumns]="reportDisplayedColumns"
+                [template]="reportTemplateForTable" [_caller]="caller"></app-to-be-deleted>
+        </div>
+    </div>
+
+    <div *ngIf="showWarningImg" fxLayout="column" fxLayoutAlign="center center" style="margin-top: 10px;">
+        <img src="../../../assets/images/select-atleast-one.jpg" class="imgSelectAtleastOne">
+        <span fxLayoutAlign="center center" class="selectAtleastOne">Select atleast one user!</span>
+    </div>
+</div>

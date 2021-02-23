@@ -1,0 +1,25 @@
+.footer {
+    background: white;
+    color: #5c2d91;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+.container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 3%;
+    padding: 0.5%;
+}
+
+.logo {
+    height: 25px;
+    background: transparent;
+}
+
+.fabMenu {
+    position: sticky;
+    bottom: 20%;
+    right: 20px;
+}

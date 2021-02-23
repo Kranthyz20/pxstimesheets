@@ -1,0 +1,164 @@
+.mat-expansion-panel-header {
+    height: 35px !important;
+}
+
+.panel-container {
+    margin: 0 1.8%;
+    // border: 0.1px solid #5c2d91;
+}
+
+.title {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.btnSearch {
+    position: relative;
+    // bottom: 10px;
+}
+
+.actualsContainer {
+    margin: 1% 1.8%;
+    // padding: 0.5%;
+}
+
+.actualsListitem {
+    // overflow: auto;
+    font-size: 11px;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.mat-list-base .mat-list-item,
+.mat-list-base .mat-list-option {
+    height: 40px;
+}
+
+.mat-list-base {
+    padding-top: 0px;
+}
+
+.container1 {
+    margin: 1.1% 0;
+    padding-left: 5px;
+    font-size: 12px;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.missingDatesChips {
+    background: white;
+    color: red;
+    font-size: 11px;
+}
+
+::ng-deep .mat-option-text {
+    font-size: 12px !important;
+}
+
+::ng-deep .mat-select-value-text {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar {
+    // width: 229px!important;
+    // height: 300px!important;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 12px;
+}
+
+.detailsContainer {
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+::ng-deep.mat-tab-label .mat-tab-label-content {
+    flex-wrap: wrap !important;
+}
+::ng-deep.mat-tab-label .mat-tab-label-content span {
+    display: flex !important;
+    flex: 1 0 100% !important;
+    justify-content: center !important;
+    // font-size: 10px;
+}
+
+.lbl {
+    color: gray;
+    // font-size: 13px;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+.value {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.projectContainer {
+    padding: 1% 0;
+}
+
+.status-container {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.submitted-indication {
+    width: 2%;
+    // background-color: green;
+    border-radius: 10px;
+}
+
+.not-filled-indication {
+    width: 2%;
+    // background-color: lightgray;
+    border-radius: 10px;
+}
+
+.not-submitted-indication {
+    width: 2%;
+    // background-color: orange;
+    border-radius: 10px;
+}
+
+.indicator {
+    height: 11px;
+    width: 11px;
+    border-radius: 100%;
+    margin-top: 2px !important;
+}
+
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled),
+::ng-deep.mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    opacity: 1;
+}
+
+.desktopContainer::before::after {
+    transition: all 0.2s ease-in-out;
+}
+
+.mobileContainer::before::after {
+    transition: all 0.2s ease-in-out;
+}
+
+.tabGroup {
+    min-height: 300px;
+}
+
+.suffix {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.btn {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    background: #5c2d91;
+    color: white;
+    // border: 1px solid #5c2d91;
+    // color: #5c2d91;
+    border-radius: 4px;
+    border-bottom-right-radius: 14px;
+}
+
+.mat-card .mat-divider-horizontal {
+    width: 94%;
+    margin-left: 6%;
+}
+
+

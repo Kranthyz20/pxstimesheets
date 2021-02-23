@@ -1,0 +1,58 @@
+.mat-expansion-panel-header {
+    height: 35px !important;
+}
+
+.panel-container {
+    margin: 0 1.8%;
+}
+
+.title {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.btnSearch {
+    position: relative;
+    // bottom: 10px;
+}
+
+::ng-deep .mat-option-text {
+    font-size: 13px !important;
+}
+
+::ng-deep .mat-select-value-text {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+}
+
+.report-container {
+    margin: 16px 1.8% 0px 1.8%;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 12px;
+}
+
+.userLbl {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 10px;
+    color: gray;
+    text-align: end;
+    padding-right: 15px;
+}
+
+.userValue {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 10px;
+    color: black;
+}
+
+.selectAtleastOne {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 16px;
+    color: black;
+    font-weight: 100;
+    padding-top: 10px;
+}
+
+.imgSelectAtleastOne {
+    width: 300px;
+    height: auto;
+}

@@ -1,0 +1,128 @@
+<div class="actualsContainer" fxLayout="column" fxLayoutGap="10px">
+    <div>
+        <mat-expansion-panel style="margin-bottom: 10px;">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">
+                    Additional Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div fxLayoutGap="10px" fxLayoutAlign="center center" fxLayout.sm="column" fxLayout.xs="column"
+                fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center" fxLayoutAlign.gt-sm="center center">
+                <div class="mat-elevation-z1 detailsContainer" *ngFor="let sets of timesheetsMock;">
+                    <mat-list>
+                        <mat-list-item *ngFor="let item of sets.set;let j=index;" class="actualsListitem btnAnmClass"
+                            [ngStyle]="{'height': (item.label == 'Org.Unit' && screenWidth != 0 && !(screenWidth>=380 )) ? '65px' : '40px' }">
+                            <span fxFlex="40"><b>{{item.label}}</b></span>
+                            <span fxFlex="4">:</span>
+                            <span fxFlex="55" *ngIf="item.value == 'datepicker'">
+                                <mat-form-field style="width: 100px !important;margin-bottom: -10px;">
+                                    <input matInput [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </span>
+                            <span fxFlex="48" *ngIf="item.value != 'datepicker'">{{item.value}}</span>
+                            <mat-divider></mat-divider>
+                        </mat-list-item>
+                    </mat-list>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </div>
+    <div fxLayoutGap="10px" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.xs="center center"
+        fxLayoutAlign.sm="center center" fxLayoutAlign.gt-sm="center start" @btnAnm>
+        <div class="mat-elevation-z5 datePicker-holder btnAnmClass" fxFlex="20" style="width: 300px;">
+            <mat-calendar #myCalendar [dateClass]="dateClass" [selected]="selectedDate"
+                (selectedChange)="dateClick($event)">
+            </mat-calendar>
+        </div>
+        <div fxFlex="80">
+            <div *ngIf="isLoading" style="margin-top: 10%;" fxLayoutAlign="center center">
+                <mat-spinner [diameter]="40"></mat-spinner>
+            </div>
+            <div *ngIf="noApprovals" fxLayout="column" fxLayoutAlign="center center">
+                <img src="../../../assets/images/no-approvals-needed.png" class="imgNoApprovals">
+                <span fxLayoutAlign="center center" class="noApprovals">Relax! No Approvals to show!</span>
+            </div>
+
+            <!-- For desktop view-->
+            <div *responsive="{bootstrap: ['xl','lg','md']}">
+                <div *ngIf="!isLoading && showDetailsTable" style="width: 100%;" @listAnimation>
+                    <app-to-be-deleted [_datasource]="datasource" [_displayedColumns]="displayedColumns"
+                        [template]="columnsToDisplay" [_caller]="caller"></app-to-be-deleted>
+                </div>
+            </div>
+        </div>
+        <!-- For Mobile View -->
+        <div *responsive="{bootstrap: ['sm','xs']}" class="users-container-mobile">
+            <div *ngIf="!isLoading && showDetailsTable">
+                <mat-expansion-panel [expanded]="false" style="margin-bottom: 10px;width: 100%;" class="btnAnmClass"
+                    hideToggle *ngFor="let src of datasource">
+                    <mat-expansion-panel-header #panelH (click)="panelH._toggle()">
+                        <mat-panel-title (click)="panelH._toggle()" fxLayout="row">
+                            <mat-icon class="user-icon">account_circle</mat-icon>
+                            <span class="user-title">{{src.userInformation}}</span>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <span class="flex-spacer user-description">
+                                {{src.total}}
+                            </span>
+                            <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(src) : null" [checked]="selection.isSelected(src)"
+                                style="margin-left: 8px; margin-top: 2px;">
+                            </mat-checkbox>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-card class="mobile-details-container mat-elevation-z3" fxLayout="column" fxLayoutGap="15px">
+                        <div fxLayout="row">
+                            <span fxFlex="48" fxLayoutAlign="center center" class="lbl">Monday</span>
+                            <span fxFlex="4">:</span>
+                            <Span fxFlex="48" fxLayoutAlign="center center" class="value">{{src.mon}}</Span>
+                        </div>
+                        <div fxLayout="row">
+                            <span fxFlex="48" fxLayoutAlign="center center" class="lbl">Tuesday</span>
+                            <span fxFlex="4">:</span>
+                            <Span fxFlex="48" fxLayoutAlign="center center" class="value">{{src.tue}}</Span>
+                        </div>
+                        <div fxLayout="row">
+                            <span fxFlex="48" fxLayoutAlign="center center" class="lbl">Wednesday</span>
+                            <span fxFlex="4">:</span>
+                            <Span fxFlex="48" fxLayoutAlign="center center" class="value">{{src.wed}}</Span>
+                        </div>
+                        <div fxLayout="row">
+                            <span fxFlex="48" fxLayoutAlign="center center" class="lbl">Thursday</span>
+                            <span fxFlex="4">:</span>
+                            <Span fxFlex="48" fxLayoutAlign="center center" class="value">{{src.thu}}</Span>
+                        </div>
+                        <div fxLayout="row">
+                            <span fxFlex="48" fxLayoutAlign="center center" class="lbl">Friday</span>
+                            <span fxFlex="4">:</span>
+                            <Span fxFlex="48" fxLayoutAlign="center center" class="value">{{src.fri}}</Span>
+                        </div>
+                        <div fxLayout="row">
+                            <span fxFlex="48" fxLayoutAlign="center center" class="lbl">Saturday</span>
+                            <span fxFlex="4">:</span>
+                            <Span fxFlex="48" fxLayoutAlign="center center" class="value">{{src.sat}}</Span>
+                        </div>
+                        <div fxLayout="row">
+                            <span fxFlex="48" fxLayoutAlign="center center" class="lbl">Sunday</span>
+                            <span fxFlex="4">:</span>
+                            <Span fxFlex="48" fxLayoutAlign="center center" class="value">{{src.sun}}</Span>
+                        </div>
+                        <button mat-raised-button class="btn" style="border-bottom-right-radius: 0px;">
+                            <mat-icon class="view-details-icon">visibility</mat-icon>View Details
+                        </button>
+                    </mat-card>
+                </mat-expansion-panel>
+
+                <div style="margin-top: 20px;" fxLayout="row">
+                    <span fxLayoutAlign="center center" fxFlex>
+                        <button class="btn" [disabled]="!isButtonEnable" (click)="onClick('approved')"
+                            mat-raised-button>Approve Selected</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

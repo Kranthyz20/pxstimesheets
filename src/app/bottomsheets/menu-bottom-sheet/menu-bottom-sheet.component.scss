@@ -1,0 +1,41 @@
+.navList {
+    color: #5c2d91;
+    /* background: #5c2d91; */
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    /* border-radius: 0 0 14px; */
+    width: 100%;
+    font-size: 14px;
+}
+
+/* .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+    height: auto;
+}
+
+.mat-list-base {
+    padding-top: 0px;
+} */
+
+.navList:hover {
+    background: white;
+    /* border-radius: 0 0 14px; */
+    color: #00bcee;
+    padding-left: 15px; 
+    transition: 0.3s ease-out;
+    cursor: pointer;
+}
+
+.is-active {
+    background: white;
+    /* border-radius: 0 0 14px; */
+    color: #00bcee;
+    /* padding-right: 10px;  */
+    transition: 0.3s ease-out;
+}
+
+.icons {
+    cursor: pointer;
+}
+
+.icons:hover {
+    color: #00bcee;
+}

@@ -1,0 +1,32 @@
+.title {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    margin-bottom: 0px;
+}
+
+.divider {
+    background: rgba(0, 0, 0, 0) linear-gradient(to right, #5c2d91 28%, #494aa4 41%, #00bcee 100%) repeat scroll 0 0;
+    width: 100%;
+    height: 2px
+}
+
+.btnActions {
+    color: #5c2d91;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    border-radius: 0 0 14px;
+    border: 1px solid #5c2d91;
+}
+
+.btnActions:hover {
+    color: #00bcee;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    border-radius: 0 0 14px;
+    border: 1px solid #00bcee;
+}
+
+.content {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.buttons {
+    padding-bottom: 3%
+}

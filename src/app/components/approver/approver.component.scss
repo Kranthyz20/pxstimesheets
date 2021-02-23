@@ -1,0 +1,154 @@
+.mat-expansion-panel-header {
+    height: 35px !important;
+}
+
+.panel-container {
+    margin: 0 1.8%;
+    // border: 0.1px solid #5c2d91;
+}
+
+.title {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.actualsContainer {
+    margin: 0 1.8% 1.8% 1.8%;
+}
+
+.actualsListitem {
+    // overflow: auto;
+    font-size: 11px;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.mat-list-base .mat-list-item,
+.mat-list-base .mat-list-option {
+    height: 40px;
+}
+
+.mat-list-base {
+    padding-top: 0px;
+}
+
+::ng-deep .mat-option-text {
+    font-size: 12px !important;
+}
+
+::ng-deep .mat-select-value-text {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar {
+    // width: 229px!important;
+    // height: 300px!important;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 12px;
+}
+
+.detailsContainer {
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+::ng-deep.mat-tab-label .mat-tab-label-content {
+    flex-wrap: wrap !important;
+}
+::ng-deep.mat-tab-label .mat-tab-label-content span {
+    display: flex !important;
+    flex: 1 0 100% !important;
+    justify-content: center !important;
+    // font-size: 10px;
+}
+
+.datePicker-holder {
+    // width: 330px;
+    // height: auto;
+    border-radius: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+.mat-calendar {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    width: 100%;
+}
+
+.noApprovals {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    font-size: 16px;
+    color: black;
+    font-weight: 100;
+    padding-top: 10px;
+}
+
+.imgNoApprovals {
+    width: 300px;
+    height: auto;
+}
+
+.users-container-mobile {
+    margin: 0 1.8% 1.8% 1.8%;
+    width: 100%;
+}
+
+.user-title {
+    font-size: 12px;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    margin-top: 5px;
+    overflow: auto;
+}
+
+.mat-expansion-panel-header-description,
+.mat-expansion-panel-header-title {
+    margin-right: 0px;
+}
+
+.user-description {
+    font-size: 12px;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif !important;
+    margin-top: 5px;
+    color: green;
+    font-weight: bold;
+}
+
+.mobile-details-container {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #5c2d91;
+}
+
+.lbl {
+    color: gray;
+    // font-size: 13px;
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+.value {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.btn {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    background: #5c2d91;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    border-bottom-right-radius: 14px;
+}
+
+.view-details-icon {
+    margin-bottom: 6px;
+    margin-right: 8px;
+}
+
+.select-all {
+    font-family: Proximus, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.user-icon {
+    padding-right: 7px;
+    font-size: 25px;
+    color: gray;
+}

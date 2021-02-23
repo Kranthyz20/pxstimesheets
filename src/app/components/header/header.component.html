@@ -1,0 +1,44 @@
+<mat-progress-bar *ngIf="enableSpinner" class="progressBar" mode="indeterminate"></mat-progress-bar>
+<mat-toolbar class="toolbar mat-elevation-z5">
+    <button mat-icon-button (click)="openMenu()" matTooltip="Menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span class="flex-spacer appName" fxLayoutAlign="center center">{{title}}</span>
+    <mat-menu #menu="matMenu">
+        <span mat-menu-item fxLayoutGap="10px">
+            <i class="fa fa-user fa-lg"></i>
+            <span class="userMenu">{{perId}}</span>
+        </span>
+        <span mat-menu-item fxLayoutGap="10px">
+            <i class="fa fa-lock fa-lg"></i>
+            <span class="userMenu">{{userProfile}}</span>
+        </span>
+        <span mat-menu-item fxLayoutGap="10px">
+            <i class="fa fa-desktop"></i>
+            <span class="userMenu">{{env}}</span>
+        </span>
+    </mat-menu>
+
+    <mat-icon matRipple class="material-icons" [matMenuTriggerFor]="menu" matTooltip="Profile">perm_identity</mat-icon>
+</mat-toolbar>
+
+<!-- <mat-toolbar class="toolbar">
+    <mat-toolbar-row class="toolbarRow" fxLayout="row" fxLayout.xs="row" fxLayoutGap="10px">
+        <mat-progress-bar *ngIf="enableSpinner" class="progressBar" mode="indeterminate"></mat-progress-bar>
+        <i class="fa fa-home fa-lg icons" matTooltip="Home" (click)="gotoHome()"></i>
+        <button mat-icon-button class="material-icons" *ngFor="let btn of buttons">
+            <mat-icon>{{btn.icon}}</mat-icon>
+        </button>
+        <span class="flex-spacer title">{{screenTitle}}</span> -->
+<!-- Menu Style 1 -->
+<!-- <mat-nav-list @btnAnm fxLayout="row" fxLayout.xs="row" fxLayoutAlign.xs="center center"
+            fxLayoutAlign.sm="center center" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px">
+            <a class="navList" routerLinkActive="is-active" mat-list-item *ngFor="let menuItem of menuItems"
+                [routerLink]="menuItem.menuItemLink">
+                {{ menuItem.menuItemName }}
+            </a>
+        </mat-nav-list> -->
+<!-- Menu Style 2 -->
+<!-- <i class="fa fa-bars fa-lg icons" (click)="openMenu()" matTooltip="Menu"></i>
+    </mat-toolbar-row>
+</mat-toolbar> -->
